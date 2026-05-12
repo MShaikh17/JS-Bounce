@@ -23,10 +23,10 @@ function animate() {
   view.clearRect(0, 0, canvas.width, canvas.height);
   x += dx;
   y += dy;
-  if (y+40 > canvas.height || y < 40) {
+  if (y + 40 > canvas.height || y < 40) {
     dy = -dy;
   }
-  if (x+40 > canvas.width || x < 40) {
+  if (x + 40 > canvas.width || x < 40) {
     dx = -dx;
   }
   view.beginPath();
