@@ -26,12 +26,12 @@ let y = 100;
 
 function getRandomColor() {
   return `rgb(
-  {Math.floor(Math.random() * 256)},
-  {Math.floor(Math.random() * 256)},
-  {Math.floor(Math.random() * 256)},
-  )';`;
+  ${Math.floor(Math.random() * 256)},
+  ${Math.floor(Math.random() * 256)},
+  ${Math.floor(Math.random() * 256)} )`;
 }
 
+// this animates the ball to move around the canvas and bounce off walls.
 function animate() {
   view.clearRect(0, 0, canvas.width, canvas.height);
   x += dx;
@@ -43,6 +43,7 @@ function animate() {
     dy = -dy;
     WallHit = true;
   }
+
   if (x + radius > canvas.width || x - radius < 0) {
     dx = -dx;
     WallHit = true;
