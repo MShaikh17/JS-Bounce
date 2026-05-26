@@ -4,7 +4,9 @@ const canvas = document.getElementById("canvas");
 const view = canvas.getContext("2d");
 const radius = 40;
 
-let ballcolour = getRandomColor();
+let ballcolor = getRandomColor();
+
+// initial colour will be set when animation starts
 
 function resize() {
   canvas.width = window.innerWidth;
@@ -37,11 +39,11 @@ function animate() {
 
   let WallHit = false;
 
-  if (y + radius > canvas.height || y - radius < 40) {
+  if (y + radius > canvas.height || y - radius < 0) {
     dy = -dy;
     WallHit = true;
   }
-  if (x + radius > canvas.width || x - radius < 40) {
+  if (x + radius > canvas.width || x - radius < 0) {
     dx = -dx;
     WallHit = true;
   }
@@ -51,8 +53,7 @@ function animate() {
   }
 
   view.beginPath();
-  view.arc(x, y, radius, 0, Math.PI * 2);
-  view.fillStyle = ballcolor();
+  view.fillStyle = ballcolor;
   view.arc(x, y, radius, 0, Math.PI * 2);
   view.fill();
   requestAnimationFrame(animate);
