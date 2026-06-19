@@ -8,7 +8,7 @@ export class Ball {
     const maxSpeed = 10;
     this.dx = Math.random() * maxSpeed - maxSpeed / 2;
     this.dy = Math.random() * maxSpeed - maxSpeed / 2;
-    this.radius = 3;
+    this.radius = 5;
     this.color = this.getRandomColor();
   }
   update() {
