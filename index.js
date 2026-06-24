@@ -1,4 +1,5 @@
 import { Ball } from "./ball.js";
+import { Util } from "./util.js";
 
 console.log("working");
 
@@ -23,7 +24,7 @@ resize();
 //It calls the resize function to adjust the canvas size and styles accordingly.
 window.addEventListener("resize", resize);
 const balls = [];
-const numballs = 1000;
+const numballs = 100;
 for (let i = 0; i < numballs; i++) {
   //this function generates a random rgb colour string for the ball when it hits a wall.
   const x = Math.floor(Math.random() * canvas.width);
@@ -42,6 +43,7 @@ function animate() {
   //this draws the ball on the canvas at its new position with the current colour.
   for (const ball of balls) {
     ball.update();
+    Util.collision(balls[0], balls[1]);
     ball.updateDraw();
   }
   requestAnimationFrame(animate);

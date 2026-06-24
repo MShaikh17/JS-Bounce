@@ -5,10 +5,16 @@ export class Ball {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    const maxSpeed = 10;
-    this.dx = Math.random() * maxSpeed - maxSpeed / 2;
-    this.dy = Math.random() * maxSpeed - maxSpeed / 2;
-    this.radius = 5;
+
+    const speed = 3;
+    const angle = Math.random() * Math.PI * 2;
+    
+    
+    this.dx = Math.cos(angle) * speed;
+    this.dy = Math.sin(angle) * speed;
+    
+
+    this.radius = 10;
     this.color = this.getRandomColor();
   }
   update() {
@@ -17,15 +23,26 @@ export class Ball {
 
     let WallHit = false;
 
-    if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+    if (this.y + this.radius > canvas.height) {
+      this.y = canvas.height - this.radius;
       this.dy = -this.dy;
-      WallHit = true;
+    }
+      
+    if (this.y - this.radius < 0) {
+      this.y = this.radius;
+      this.dy = -this.dy;
     }
 
-    if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+    if (this.x + this.radius > canvas.width) {
+      this.x = canvas.width - this.radius;
       this.dx = -this.dx;
-      WallHit = true;
     }
+      
+    if (this.x - this.radius < 0) {
+      this.x = this.radius;
+      this.dx = -this.dx;
+    }
+    
   }
 
   updateDraw() {
