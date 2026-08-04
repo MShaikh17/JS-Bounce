@@ -1,5 +1,6 @@
 import { Ball } from "./ball.js";
 import { Util } from "./util.js";
+import {Triangle} from "./triangle.js";
 
 console.log("working");
 
@@ -23,8 +24,11 @@ resize();
 //this is the event listener for resizing the window
 //It calls the resize function to adjust the canvas size and styles accordingly.
 window.addEventListener("resize", resize);
+
+const triangle = new Triangle();
+
 const balls = [];
-const numballs = 5;
+const numballs = 2;
 for (let i = 0; i < numballs; i++) {
   //this function generates a random rgb colour string for the ball when it hits a wall.
   const x = Math.floor(Math.random() * canvas.width);
@@ -46,7 +50,7 @@ function animate() {
     // Util.collision(balls[0], balls[1]);
   }
 
-  for (let i = 0; i < balls.length; i++) {
+ /* for (let i = 0; i < balls.length; i++) {
     for (let j = i + 1; j < balls.length; j++) {
       if (Util.collision(balls[i], balls[j])) {
         const b1 = balls[i];
@@ -61,7 +65,11 @@ function animate() {
         }
       }
     }
-  }
+  } */
+
+
+  triangle.updateDraw();
+
   for (const ball of balls) {
     ball.updateDraw();
   }

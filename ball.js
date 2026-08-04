@@ -6,7 +6,7 @@ export class Ball {
     this.x = x;
     this.y = y;
 
-    const speed = 1;
+    const speed = 0.5;
     const angle = Math.random() * Math.PI * 2;
 
     this.dx = Math.cos(angle) * speed;
@@ -20,33 +20,26 @@ export class Ball {
     this.counter = 250;
   }
   update() {
-    if (!this.active) return;
-    if (this.counter > 0) {
-      this.counter -= 1;
-    }
+    //if (!this.active) return;
     this.x += this.dx;
     this.y += this.dy;
 
     let WallHit = false;
 
-    if (this.y + this.radius > canvas.height) {
-      this.y = canvas.height - this.radius;
-      this.dy = -this.dy;
+    if (this.y - this.radius > canvas.height) {
+      this.y = -this.radius;
     }
 
-    if (this.y - this.radius < 0) {
-      this.y = this.radius;
-      this.dy = -this.dy;
+    if (this.y + this.radius < 0) {
+      this.y = canvas.height + this.radius;
     }
 
-    if (this.x + this.radius > canvas.width) {
-      this.x = canvas.width - this.radius;
-      this.dx = -this.dx;
+    if (this.x - this.radius > canvas.width) {
+      this.x = -this.radius;
     }
 
-    if (this.x - this.radius < 0) {
-      this.x = this.radius;
-      this.dx = -this.dx;
+    if (this.x < -this.radius) {
+      this.x = canvas.width + this.radius;
     }
   }
 
